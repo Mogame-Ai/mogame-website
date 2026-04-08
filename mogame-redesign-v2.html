@@ -2398,7 +2398,7 @@ body.cursor-hover #cursor-dot {
     opacity: 1 !important;
   }
   /* Headline */
-  .hero h1 { margin-bottom: 0; }
+  .hero h1 { margin-bottom: 0; opacity: 1 !important; transform: none !important; }
   /* CTA anchored to bottom via space-between */
   .hero-right {
     display: block !important;
@@ -2410,10 +2410,15 @@ body.cursor-hover #cursor-dot {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
+  }
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary {
     opacity: 1 !important;
     transform: none !important;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
   }
-  .btn-primary, .btn-secondary { width: 100%; text-align: center; justify-content: center; }
 
   /* ── STATS BAR: single tight row, compact height ── */
   .hero-stats-bar { grid-template-columns: repeat(4, 1fr) !important; }
