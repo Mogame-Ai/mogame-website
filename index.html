@@ -1929,29 +1929,29 @@ body.cursor-hover #cursor-dot {
     margin-top: 3px;
   }
 
-  /* ── HERO: full-screen flex, headline bottom-anchored, stats pinned to foot ── */
+  /* ── HERO: full-screen, headline centered in available space, stats at foot ── */
   .hero {
     display: flex;
     flex-direction: column;
     min-height: 100svh;
-    justify-content: space-between;
   }
   .hero-split {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* headline floats to bottom of available space */
+    justify-content: center; /* center headline in the available space */
+    padding-top: 4rem; /* slight upward bias — clears nav, avoids dead-center */
   }
-  .hero-left { padding: 5.5rem 1.5rem 2.5rem; }
+  .hero-left { padding: 0 1.5rem 0; }
   .hero-eyebrow { font-size: 0.55rem; letter-spacing: 0.25em; margin-bottom: 1.2rem; }
-  .hero-right { display: none; } /* remove gap-causing invisible buttons */
+  .hero-right { display: none; }
   .hero-desc { display: none; }
 
-  /* ── STATS BAR: single row across full width ── */
+  /* ── STATS BAR: single tight row, compact height ── */
   .hero-stats-bar { grid-template-columns: repeat(4, 1fr) !important; }
-  .hero-stat-item { padding: 1.2rem 0.6rem; }
-  .hero-stat-num { font-size: 1.6rem; margin-bottom: 0.25rem; }
-  .hero-stat-label { font-size: 0.42rem; letter-spacing: 0.12em; }
+  .hero-stat-item { padding: 1rem 0.5rem; }
+  .hero-stat-num { font-size: 1.4rem; margin-bottom: 0.2rem; }
+  .hero-stat-label { font-size: 0.4rem; letter-spacing: 0.1em; line-height: 1.4; }
 
   /* ── OTHER ── */
   .marquee-strip { font-size: 0.6rem; letter-spacing: 0.2em; }
