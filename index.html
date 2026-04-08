@@ -2362,25 +2362,21 @@ body.cursor-hover #cursor-dot {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    padding: 8rem 1.5rem 2rem;
+    justify-content: space-between;
+    padding: 7.5rem 1.5rem 2.5rem;
   }
-  .hero-left {
-    padding: 0;
-  }
-  /* Locations at top — clear, breathing */
+  .hero-left { padding: 0; }
+  /* Locations at top */
   .hero-eyebrow {
     font-size: 0.52rem;
     letter-spacing: 0.22em;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     display: block;
     opacity: 1 !important;
   }
-  /* Headline: large, room above and below */
-  .hero h1 {
-    margin-bottom: 2.5rem;
-  }
-  /* Show right panel just for the CTA button, hide description */
+  /* Headline */
+  .hero h1 { margin-bottom: 0; }
+  /* CTA anchored to bottom via space-between */
   .hero-right {
     display: block !important;
     border: none !important;
@@ -2391,6 +2387,8 @@ body.cursor-hover #cursor-dot {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
+    opacity: 1 !important;
+    transform: none !important;
   }
   .btn-primary { width: 100%; text-align: center; justify-content: center; }
   .btn-secondary { display: none; }
