@@ -1232,14 +1232,23 @@ footer {
 
 /* FIND OUT MORE EXPAND */
 .brands-more {
-  display: none;
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-top: 2rem;
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, max-height 0.5s ease;
 }
 
 .brands-more.open {
-  display: grid;
+  max-height: 9999px;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* ─── BRANDS EDITORIAL GRID LAYOUT ─── */
@@ -2666,16 +2675,6 @@ body.cursor-hover #cursor-dot {
       grid.classList.toggle('open');
       btn.classList.toggle('open');
       btn.childNodes[0].textContent = grid.classList.contains('open') ? 'Show Less ' : 'Case History ';
-      // Force repaint on images so object-fit:cover recalculates after display:none→grid (iOS Safari bug)
-      if (grid.classList.contains('open')) {
-        setTimeout(function() {
-          grid.querySelectorAll('.brand-card-image').forEach(function(img) {
-            img.style.display = 'none';
-            img.offsetHeight;
-            img.style.display = '';
-          });
-        }, 50);
-      }
     }
   </script>
 
