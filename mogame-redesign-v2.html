@@ -2653,6 +2653,16 @@ body.cursor-hover #cursor-dot {
       grid.classList.toggle('open');
       btn.classList.toggle('open');
       btn.childNodes[0].textContent = grid.classList.contains('open') ? 'Show Less ' : 'Case History ';
+      // Force repaint on images so object-fit:cover recalculates after display:none→grid (iOS Safari bug)
+      if (grid.classList.contains('open')) {
+        setTimeout(function() {
+          grid.querySelectorAll('.brand-card-image').forEach(function(img) {
+            img.style.display = 'none';
+            img.offsetHeight;
+            img.style.display = '';
+          });
+        }, 50);
+      }
     }
   </script>
 
