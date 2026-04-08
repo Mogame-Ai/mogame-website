@@ -1328,18 +1328,41 @@ footer {
   .leaders-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: 1fr 1fr; }
 
+  /* Journey: horizontal swipe carousel on mobile */
   .acts-grid {
-    grid-template-columns: 1fr;
-    margin-top: 3rem;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    margin: 2rem -1.5rem 0;
+    padding: 0 1.5rem 1.5rem;
+    scrollbar-width: none;
+    border-top: none;
+    grid-template-columns: none;
   }
+  .acts-grid::-webkit-scrollbar { display: none; }
   .act-card {
+    flex: 0 0 82vw;
+    scroll-snap-align: start;
+    min-width: 0;
     border-right: none;
-    border-bottom: 1px solid var(--border);
-    padding: 2.5rem 0;
+    border: 1px solid var(--border);
+    padding: 2rem 1.5rem;
   }
-  .act-card:last-child { border-bottom: none; }
-  .act-card:not(:first-child) { padding-left: 0; }
+  .act-card:not(:first-child) { padding-left: 1.5rem; }
   .act-title { font-size: 1.3rem; }
+  .journey::after {
+    content: 'Swipe →';
+    display: block;
+    font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+    opacity: 0.6;
+  }
 
   .footer-cols { flex-direction: column; gap: 2rem; }
   .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
