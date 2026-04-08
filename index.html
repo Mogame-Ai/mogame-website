@@ -2247,7 +2247,35 @@ body.cursor-hover #cursor-dot {
     align-items: flex-start;
   }
   .work-subsection-title { font-size: 1.4rem; }
-  .brands-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  /* Ventures: horizontal swipe carousel on mobile */
+  .brands-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    margin: 0 -1.5rem;
+    padding: 0 1.5rem 1.5rem;
+    scrollbar-width: none;
+    grid-template-columns: none;
+  }
+  .brands-grid::-webkit-scrollbar { display: none; }
+  .brands-grid .brand-card {
+    flex: 0 0 82vw;
+    scroll-snap-align: start;
+    min-width: 0;
+  }
+  .work-subsection--ventures::after {
+    content: 'Swipe to explore →';
+    display: block;
+    font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-top: 0.8rem;
+    opacity: 0.6;
+  }
   /* Clients: horizontal swipe carousel */
   .clients-grid-work {
     display: flex;
@@ -2891,7 +2919,7 @@ body.cursor-hover #cursor-dot {
   <div class="section-tag reveal">The Work</div>
 
   <!-- THE VENTURES -->
-  <div class="work-subsection" id="ventures">
+  <div class="work-subsection work-subsection--ventures" id="ventures">
     <div class="work-subsection-header reveal">
       <h2 class="work-subsection-title">The Ventures</h2>
       <p class="work-subsection-desc">Brands we built, own, and still run. Two decades of operating real businesses is what makes us a different kind of advisor.</p>
