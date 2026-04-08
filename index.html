@@ -64,6 +64,7 @@ html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: #444444 var(--bg-primary);
+  overflow-x: clip;
 }
 
 body {
@@ -771,6 +772,12 @@ section {
   padding-bottom: 5rem;
 }
 
+.clients-marquee {
+  overflow: hidden;
+  margin-top: 3rem;
+  padding: 1rem 0;
+}
+
 .clients-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -1154,7 +1161,8 @@ footer {
 
 @media (max-width: 768px) {
   nav { padding: 1rem 1.5rem; backdrop-filter: none; -webkit-backdrop-filter: none; }
-  .nav-logo img { height: 48px !important; }
+  .nav-logo img { height: 40px !important; }
+  .nav-logo span { display: none; }
   .nav-links { display: none; }
   .hamburger { display: flex; z-index: 1002; }
 
@@ -1918,8 +1926,17 @@ body.cursor-hover #cursor-dot {
   .hero-stat-label { font-size: 0.55rem; }
   .service-row { padding: 1.8rem 0; }
   .service-num { font-size: 0.65rem; }
-  .partners-grid { grid-template-columns: 1fr; }
   .about { flex-direction: column; }
+  /* Leadership: full-width landscape photos on single-column layout */
+  .leader-img-wrap { max-height: none; aspect-ratio: 4/3; }
+  /* Partners: 2-column with reduced padding */
+  .partners-grid { grid-template-columns: repeat(2, 1fr); }
+  .partner-card { padding: 1.4rem 1rem; }
+  .partner-card h3 { font-size: 1rem; }
+  .partner-card p { font-size: 0.8rem; line-height: 1.7; }
+  .partner-card-num { margin-bottom: 1rem; }
+  .partner-card-photo { margin-bottom: 1rem; }
+  .partner-career li { font-size: 0.75rem; }
 }
 
 @media (max-width: 480px) {
