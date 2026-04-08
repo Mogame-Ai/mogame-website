@@ -867,6 +867,15 @@ section {
   transform: scale(1.03);
 }
 
+/* Michele's photo is full-colour — force full B&W to match Danilo and Alberto */
+.leaders-grid .leader-card:nth-child(2) .leader-img-wrap img {
+  filter: grayscale(100%) contrast(1.05);
+}
+.leaders-grid .leader-card:nth-child(2):hover .leader-img-wrap img {
+  filter: grayscale(0%) contrast(1.05);
+  transform: scale(1.03);
+}
+
 .leader-img-wrap::after {
   content: '';
   position: absolute;
