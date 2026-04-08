@@ -1920,7 +1920,7 @@ body.cursor-hover #cursor-dot {
 /* MOBILE AUDIT FIXES */
 @media (max-width: 768px) {
   /* ── NAV ── */
-  .nav-logo img { height: 52px !important; }
+  .nav-logo img { height: 64px !important; }
   .nav-logo span {
     display: block;
     font-size: 0.55rem;
@@ -1929,18 +1929,29 @@ body.cursor-hover #cursor-dot {
     margin-top: 3px;
   }
 
-  /* ── HERO: pack content top-down, stats bar visible without scroll ── */
-  .hero { grid-template-rows: auto auto; }
-  .hero-left { padding: 5rem 1.5rem 0.8rem; justify-content: flex-start; }
-  .hero-eyebrow { font-size: 0.55rem; letter-spacing: 0.25em; margin-bottom: 1rem; }
-  .hero-right { padding: 0.6rem 1.5rem 1.5rem; border-top: none; justify-content: flex-start; }
+  /* ── HERO: full-screen flex, headline bottom-anchored, stats pinned to foot ── */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+    justify-content: space-between;
+  }
+  .hero-split {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* headline floats to bottom of available space */
+  }
+  .hero-left { padding: 5.5rem 1.5rem 2.5rem; }
+  .hero-eyebrow { font-size: 0.55rem; letter-spacing: 0.25em; margin-bottom: 1.2rem; }
+  .hero-right { display: none; } /* remove gap-causing invisible buttons */
   .hero-desc { display: none; }
-  .hero-buttons { gap: 0.6rem; }
 
-  /* ── STATS BAR: compact 2×2 ── */
-  .hero-stat-item { padding: 1rem 1.2rem; }
-  .hero-stat-num { font-size: 1.9rem; margin-bottom: 0.3rem; }
-  .hero-stat-label { font-size: 0.5rem; }
+  /* ── STATS BAR: single row across full width ── */
+  .hero-stats-bar { grid-template-columns: repeat(4, 1fr) !important; }
+  .hero-stat-item { padding: 1.2rem 0.6rem; }
+  .hero-stat-num { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  .hero-stat-label { font-size: 0.42rem; letter-spacing: 0.12em; }
 
   /* ── OTHER ── */
   .marquee-strip { font-size: 0.6rem; letter-spacing: 0.2em; }
@@ -1960,10 +1971,9 @@ body.cursor-hover #cursor-dot {
 }
 
 @media (max-width: 480px) {
-  .hero-stats-bar { grid-template-columns: repeat(2, 1fr); }
-  .hero-stat-item { border-right: none; border-bottom: 1px solid var(--border); }
-  .hero-stat-item:nth-child(odd) { border-right: 1px solid var(--border); }
-  .hero-stat-item:last-child, .hero-stat-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+  /* stats bar stays 4-column single row — overrides handled by 768px block above */
+  .hero-stat-item { border-right: none; border-bottom: none; }
+  .hero-stat-item:not(:last-child) { border-right: 1px solid var(--border); }
 }
 
 /* ── SERVICE ACCORDION ───────────────────────────────────────────────── */
