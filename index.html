@@ -506,79 +506,57 @@ section {
   margin-top: 0.3rem;
 }
 
-/* JOURNEY / TIMELINE */
+/* JOURNEY / THREE ACTS */
 .journey {
   background: var(--bg-primary);
   overflow: hidden;
 }
 
-.timeline {
-  position: relative;
-  max-width: 900px;
-  margin: 4rem auto 0;
+.acts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 5rem;
+  border-top: 1px solid var(--border);
 }
 
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.2), rgba(255,255,255,0.6), rgba(255,255,255,0.2), transparent);
-  transform: translateX(-50%);
-}
-
-.timeline-item {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 4rem;
+.act-card {
+  padding: 3rem 3rem 3rem 0;
+  border-right: 1px solid var(--border);
   position: relative;
 }
 
-.timeline-item:nth-child(odd) {
-  flex-direction: row;
-  text-align: right;
-  padding-right: calc(50% + 40px);
+.act-card:last-child {
+  border-right: none;
+  padding-right: 0;
 }
 
-.timeline-item:nth-child(even) {
-  flex-direction: row-reverse;
-  text-align: left;
-  padding-left: calc(50% + 40px);
+.act-card:not(:first-child) {
+  padding-left: 3rem;
 }
 
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 8px;
-  width: 12px;
-  height: 12px;
-  border: 2px solid var(--gold);
-  background: var(--bg-primary);
-  border-radius: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  transition: all 0.3s;
+.act-period {
+  font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1.2rem;
 }
 
-.timeline-item:hover::before {
-  background: var(--gold);
-  box-shadow: 0 0 20px rgba(255,255,255,0.3);
-}
-
-.timeline-year {
+.act-title {
   font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  color: var(--gold);
-  font-weight: 700;
-  margin-bottom: 0.5rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
 }
 
-.timeline-text {
+.act-body {
   font-size: 0.9rem;
-  line-height: 1.7;
+  line-height: 1.85;
   color: var(--text-secondary);
 }
 
@@ -1200,15 +1178,18 @@ footer {
   .leaders-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: 1fr 1fr; }
 
-  .timeline-item:nth-child(odd),
-  .timeline-item:nth-child(even) {
-    flex-direction: column;
-    text-align: left;
-    padding: 0 0 0 40px;
+  .acts-grid {
+    grid-template-columns: 1fr;
+    margin-top: 3rem;
   }
-
-  .timeline::before { left: 10px; }
-  .timeline-item::before { left: 10px; }
+  .act-card {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 2.5rem 0;
+  }
+  .act-card:last-child { border-bottom: none; }
+  .act-card:not(:first-child) { padding-left: 0; }
+  .act-title { font-size: 1.3rem; }
 
   .footer-cols { flex-direction: column; gap: 2rem; }
   .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
@@ -2350,72 +2331,29 @@ body.cursor-hover #cursor-dot {
 <section class="journey" id="journey">
   <div class="section-tag reveal">The Record</div>
   <h2 class="section-title reveal"><em>Two Decades.</em> No Shortcuts.</h2>
-  <p class="section-desc reveal">Every year built on the last. No shortcuts, no pivots — a single line of compounding execution.</p>
 
-  <div class="timeline">
-    <div class="timeline-item reveal">
-      <div>
-        <div class="timeline-year">2008</div>
-        <div class="timeline-text">The partnership begins. A shared vision for authentic Italian food and scalable hospitality takes shape in New York City.</div>
-      </div>
+  <div class="acts-grid">
+
+    <div class="act-card reveal">
+      <div class="act-period">2008&ndash;2014</div>
+      <h3 class="act-title">Built From Nothing</h3>
+      <p class="act-body">One stall at a New York street market. No investors, no safety net &mdash; just the conviction that Italian food done correctly would find its audience. It did. One street market became one brick-and-mortar, then four, generating 3,000+ meals a day at peak. Then a catering operation.</p>
     </div>
-    <div class="timeline-item reveal">
-      <div>
-        <div class="timeline-year">2010</div>
-        <div class="timeline-text">Piccolo Cafe is born at the first NYC street market. A fast-casual Italian concept designed to prove the model.</div>
-      </div>
+
+    <div class="act-card reveal reveal-delay-1">
+      <div class="act-period">2015&ndash;2021</div>
+      <h3 class="act-title">Earned the Room</h3>
+      <p class="act-body">The calls started coming from outside. Parmigiano Reggiano, Ferrari, Felicetti &mdash; brands with reputations to protect, who needed someone with real credentials in the room. Lucciola opened in 2017: 24 seats, tasting menu only, recognised as one of the best Italian restaurants in New York City.</p>
     </div>
-    <div class="timeline-item reveal">
-      <div>
-        <div class="timeline-year">2011</div>
-        <div class="timeline-text">Expansion to multiple NYC street markets. Second and third Piccolo Cafe locations open — the multi-unit playbook starts here.</div>
-      </div>
+
+    <div class="act-card reveal reveal-delay-2">
+      <div class="act-period">2022&ndash;Present</div>
+      <h3 class="act-title">Deployed at Scale</h3>
+      <p class="act-body">The work is now institutional. Ferrari. The UNCA Awards Gala at United Nations Headquarters. Casa I Wonder at Venice, Sundance, and Cannes. PepsiCo and Felicetti global positions. We still run our own restaurant and still take the early call from someone building something serious. That hasn&rsquo;t changed.</p>
     </div>
-    <div class="timeline-item reveal">
-      <div>
-        <div class="timeline-year">2012</div>
-        <div class="timeline-text">First bistro-format Piccolo Cafe opens. Catering operations launch, extending reach beyond brick-and-mortar.</div>
-      </div>
-    </div>
-    <div class="timeline-item reveal">
-      <div>
-        <div class="timeline-year">2013</div>
-        <div class="timeline-text">Corporate catering expands across all NYC boroughs. Off-premise catering begins serving luxury brands and premium events.</div>
-      </div>
-    </div>
-    <div class="timeline-item reveal">
-      <div>
-        <div class="timeline-year">2015</div>
-        <div class="timeline-text">Appointed North American brand ambassador for Consorzio Parmigiano Reggiano. Catering goes nationwide.</div>
-      </div>
-    </div>
-    <div class="timeline-item reveal">
-      <div>
-        <div class="timeline-year">2017</div>
-        <div class="timeline-text">Lucciola opens — an award-winning 24-seat fine dining concept. R&D and innovation partnerships with multiple international brands begin.</div>
-      </div>
-    </div>
-    <div class="timeline-item reveal">
-      <div>
-        <div class="timeline-year">2023</div>
-        <div class="timeline-text">MCM — our first CPG brand — launches. Consulting offices open in Lisbon, Barcelona, and Milan. The global chapter begins.</div>
-      </div>
-    </div>
-    <div class="timeline-item reveal">
-      <div>
-        <div class="timeline-year">2024</div>
-        <div class="timeline-text">Ferrari Purosangue launch series — ten private dinners in New York City for Ferrari dealers and top clients. Ferrari Daytona SP3 bespoke delivery events begin, each matched to the individual car and client.</div>
-      </div>
-    </div>
-    <div class="timeline-item reveal">
-      <div>
-        <div class="timeline-year">2025</div>
-        <div class="timeline-text">Chef Michele Casadei Massari leads culinary direction at the 29th UNCA Awards Gala — the official celebration of the UN&rsquo;s 80th anniversary at UN Headquarters, New York. Mogame&rsquo;s institutional and luxury brand work reaches a new global stage.</div>
-      </div>
-    </div>
+
   </div>
 </section>
-
 <!-- SERVICES -->
 <section class="services" id="services">
   <div style="text-align:center; max-width:700px; margin:0 auto;">
