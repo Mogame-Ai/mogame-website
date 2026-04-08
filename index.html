@@ -1969,8 +1969,19 @@ body.cursor-hover #cursor-dot {
   .partner-card-num { margin-bottom: 1rem; }
   .partner-card-photo { margin-bottom: 1rem; }
   .partner-career li { font-size: 0.75rem; }
-  /* ── BRAND CARDS — move service tag to bottom so it doesn't cut faces ── */
-  .brand-card-tag { top: auto; bottom: 0; left: 0; right: 0; text-align: center; border-left: none; border-right: none; border-bottom: none; }
+  /* ── BRAND CARDS — move service tag below image so it doesn't cut faces ── */
+  .brand-card-img-wrap { position: static; }
+  .brand-card-tag {
+    position: absolute;
+    top: 180px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+  }
+  .brand-card-body { padding-top: 3rem; }
 }
 
 @media (max-width: 480px) {
