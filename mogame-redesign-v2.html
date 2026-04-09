@@ -2433,8 +2433,9 @@ body.cursor-hover #cursor-dot {
   .service-row { padding: 1.8rem 0; }
   .service-num { font-size: 0.65rem; }
   .about { flex-direction: column; }
-  /* Leadership: full-width landscape photos on single-column layout */
-  .leader-img-wrap { max-height: none; aspect-ratio: 4/3; }
+  /* Leadership: portrait ratio on mobile, anchor to top so heads are not cropped */
+  .leader-img-wrap { max-height: none; aspect-ratio: 3/4; }
+  .leader-img-wrap img { object-position: top center; }
   /* Partners: 2-column with reduced padding */
   .partners-grid { grid-template-columns: repeat(2, 1fr); }
   .partner-card { padding: 1.4rem 1rem; }
