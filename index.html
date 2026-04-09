@@ -3321,7 +3321,7 @@ body.cursor-hover #cursor-dot {
   </div><!-- /team-grid-all -->
 
   <div class="team-expand-wrap">
-    <button class="team-expand-btn" id="teamExpandBtn" onclick="(function(){var m=document.getElementById('teamMore');var b=document.getElementById('teamExpandBtn');var open=m.style.display!=='none';if(!open){m.style.display='grid';m.querySelectorAll('.reveal').forEach(function(el){el.style.opacity='1';el.style.transform='none';});}else{m.style.display='none';}b.textContent=open?'Show the Team':'Show Less';})()">Show the Team</button>
+    <button class="team-expand-btn" id="teamExpandBtn" onclick="(function(){var m=document.getElementById('teamMore');var b=document.getElementById('teamExpandBtn');var open=m.style.display!=='none';if(!open){m.style.display='grid';m.querySelectorAll('.reveal').forEach(function(el){el.style.opacity='1';el.style.transform='none';});}else{m.style.display='none';setTimeout(function(){b.scrollIntoView({behavior:'smooth',block:'start'});},50);}b.textContent=open?'Show the Team':'Show Less';})()">Show the Team</button>
   </div>
 
 </section>
