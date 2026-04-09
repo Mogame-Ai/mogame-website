@@ -663,6 +663,7 @@ section {
 .clients-grid-work .brand-card-img-wrap {
   position: static;
 }
+.clients-grid-work .brand-card-img-wrap::after { display: none; }
 .clients-grid-work .brand-card-tag {
   position: absolute;
   top: 180px;
@@ -2348,6 +2349,7 @@ body.cursor-hover #cursor-dot {
   }
   /* Ensure tag below photo works inside carousel cards too */
   .clients-grid-work .brand-card-img-wrap { position: static; }
+  .clients-grid-work .brand-card-img-wrap::after { display: none; }
   .clients-grid-work .brand-card-tag {
     top: 180px;
     font-size: 0.5rem;
@@ -2446,6 +2448,7 @@ body.cursor-hover #cursor-dot {
   .partner-career li { font-size: 0.75rem; }
   /* ── BRAND CARDS — move service tag below image so it doesn't cut faces ── */
   .brand-card-img-wrap { position: static; }
+  .brand-card-img-wrap::after { display: none; }
   .brand-card-tag {
     position: absolute;
     top: 180px;
