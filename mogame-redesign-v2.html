@@ -2238,6 +2238,82 @@ body.cursor-hover #cursor-dot {
   .hero-stat-item { padding: 1.8rem 2.5rem; }
 }
 
+/* ── iPad carousel overrides — must be after base CSS ── */
+@media (min-width: 769px) and (max-width: 1400px) {
+  /* WHO WE WORK WITH — horizontal carousel */
+  .who-grid {
+    display: flex !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 0;
+    margin: 0 -2rem;
+    padding: 0 2rem 1.5rem;
+    scrollbar-width: none;
+    border-top: 1px solid var(--border);
+    grid-template-columns: none;
+  }
+  .who-grid::-webkit-scrollbar { display: none; }
+  .who-card {
+    flex: 0 0 42vw !important;
+    min-width: 0;
+    scroll-snap-align: start;
+    grid-column: unset !important;
+    padding: 2rem 2rem 2rem 0 !important;
+    border-right: 1px solid var(--border) !important;
+    border-top: none !important;
+  }
+  .who-card:nth-child(4),
+  .who-card:nth-child(5) {
+    grid-column: unset !important;
+    border-top: none !important;
+    flex: 0 0 42vw !important;
+  }
+  .who-card:not(:first-child) { padding-left: 2rem !important; }
+  .who-card:last-child { border-right: none !important; padding-right: 0 !important; }
+  .who-section::after {
+    content: 'Swipe to explore →';
+    display: block;
+    font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-top: 0.8rem;
+    text-align: right;
+  }
+
+  /* CASE HISTORY — horizontal carousel */
+  .clients-grid-work {
+    display: flex !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1.5rem;
+    margin: 0 -2rem;
+    padding: 0 2rem 1.5rem;
+    grid-template-columns: none;
+    scrollbar-width: none;
+  }
+  .clients-grid-work::-webkit-scrollbar { display: none; }
+  .clients-grid-work .brand-card {
+    flex: 0 0 42vw;
+    scroll-snap-align: start;
+    min-width: 0;
+  }
+  .work-subsection--clients::after {
+    content: 'Swipe to explore →';
+    display: block;
+    font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-top: 0.8rem;
+    text-align: right;
+  }
+}
+
 @media (max-width: 768px) {
   .hero h1 { font-size: clamp(2.4rem, 8vw, 3.5rem); }
   .hero-left { padding: 9rem 1.5rem 3rem; }
