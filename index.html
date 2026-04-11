@@ -661,13 +661,40 @@ section {
   -webkit-overflow-scrolling: touch;
   gap: 1.5rem;
   scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
 }
+.clients-grid-work.is-dragging { cursor: grabbing; scroll-snap-type: none; }
 .clients-grid-work::-webkit-scrollbar { display: none; }
 .clients-grid-work .brand-card {
   flex: 0 0 380px;
   scroll-snap-align: start;
   min-width: 0;
 }
+.clients-grid-work.is-dragging .brand-card { pointer-events: none; }
+
+/* Case History carousel nav arrows */
+.case-history-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+.case-history-nav button {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.18);
+  color: var(--cream);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: border-color 0.25s, background 0.25s;
+}
+.case-history-nav button:hover { border-color: #fff; background: rgba(255,255,255,0.06); }
+.case-history-nav button:disabled { opacity: 0.25; cursor: default; }
 
 /* Client cards: tag sits below the photo, not over it */
 .clients-grid-work .brand-card-img-wrap {
@@ -3103,6 +3130,11 @@ body.cursor-hover #cursor-dot {
       </div>
     </div>
 
+    <div class="case-history-nav">
+      <button class="ch-prev" aria-label="Previous">&#8592;</button>
+      <button class="ch-next" aria-label="Next">&#8594;</button>
+    </div>
+
     </div>
   </div>
 </section>
@@ -3977,6 +4009,54 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     scrollTrigger: st('footer', 'top 90%'),
     opacity: 0, y: 30, duration: 0.7, ease: 'power2.out', stagger: 0.1
   });
+
+  // ── Case History carousel: drag-to-scroll + arrow nav ──
+  (function() {
+    const track = document.querySelector('.clients-grid-work');
+    const prevBtn = document.querySelector('.ch-prev');
+    const nextBtn = document.querySelector('.ch-next');
+    if (!track) return;
+
+    // Drag-to-scroll
+    let isDragging = false, startX, scrollLeft;
+    track.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      track.classList.add('is-dragging');
+      startX = e.pageX - track.offsetLeft;
+      scrollLeft = track.scrollLeft;
+      e.preventDefault();
+    });
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      track.classList.remove('is-dragging');
+    });
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const x = e.pageX - track.offsetLeft;
+      track.scrollLeft = scrollLeft - (x - startX);
+    });
+
+    // Arrow nav — scroll by one card width + gap
+    function cardWidth() {
+      const card = track.querySelector('.brand-card');
+      return card ? card.offsetWidth + 24 : 400;
+    }
+    if (prevBtn) prevBtn.addEventListener('click', () => {
+      track.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
+    });
+    if (nextBtn) nextBtn.addEventListener('click', () => {
+      track.scrollBy({ left: cardWidth(), behavior: 'smooth' });
+    });
+
+    // Arrow disabled states
+    function updateArrows() {
+      if (!prevBtn || !nextBtn) return;
+      prevBtn.disabled = track.scrollLeft <= 0;
+      nextBtn.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+    }
+    track.addEventListener('scroll', updateArrows, { passive: true });
+    updateArrows();
+  })();
 
 })();
 </script>
