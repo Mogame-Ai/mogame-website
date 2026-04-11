@@ -1751,18 +1751,7 @@ body.cursor-hover #cursor-dot {
 
 /* ─── GHOST SECTION NUMBERS ─── */
 .section-index {
-  position: absolute;
-  bottom: 3rem;
-  right: 3rem;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(5rem, 10vw, 9rem);
-  font-weight: 900;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(255,255,255,0.05);
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
-  letter-spacing: -0.03em;
+  display: none;
 }
 
 /* ─── CLIP-PATH TEXT REVEALS ─── */
@@ -2287,8 +2276,7 @@ body.cursor-hover #cursor-dot {
   padding-left: 2rem;
 }
 
-/* SECTION INDEX accent */
-.section-index { color: var(--accent); }
+
 
 /* RESPONSIVE OVERRIDES */
 @media (max-width: 1024px) {
