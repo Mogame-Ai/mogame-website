@@ -674,27 +674,39 @@ section {
 .clients-grid-work.is-dragging .brand-card { pointer-events: none; }
 
 /* Case History carousel nav arrows */
-.case-history-nav {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.75rem;
-  margin-top: 1.25rem;
+.work-subsection--clients {
+  position: relative;
 }
-.case-history-nav button {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.18);
-  color: var(--cream);
-  width: 36px;
-  height: 36px;
+.ch-prev,
+.ch-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(8,8,8,0.75);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: #f0f0f0;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 0.9rem;
-  transition: border-color 0.25s, background 0.25s;
+  font-size: 1rem;
+  transition: background 0.25s, border-color 0.25s;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
-.case-history-nav button:hover { border-color: #fff; background: rgba(255,255,255,0.06); }
-.case-history-nav button:disabled { opacity: 0.25; cursor: default; }
+.ch-prev { left: -22px; }
+.ch-next { right: -22px; }
+.ch-prev:hover,
+.ch-next:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
+.ch-prev:disabled,
+.ch-next:disabled { opacity: 0.2; cursor: default; }
+/* Hide arrows on mobile — touch swipe handles it */
+@media (max-width: 768px) {
+  .ch-prev, .ch-next { display: none; }
+}
 
 /* Client cards: tag sits below the photo, not over it */
 .clients-grid-work .brand-card-img-wrap {
@@ -3028,6 +3040,8 @@ body.cursor-hover #cursor-dot {
       <h2 class="work-subsection-title">Case History</h2>
       <p class="work-subsection-desc">Engagements where the brief was real, the stakes were high, and the result had to be right.</p>
     </div>
+    <button class="ch-prev" aria-label="Previous">&#8592;</button>
+    <button class="ch-next" aria-label="Next">&#8594;</button>
     <div class="clients-grid-work">
       <div class="brand-card">
       <div class="brand-card-img-wrap">
@@ -3128,11 +3142,6 @@ body.cursor-hover #cursor-dot {
         <p>Culinary Director for Pastificio Felicetti in the United States. Menu development, product integration, and chef-facing representation for one of Italy&rsquo;s most respected pasta producers — making Felicetti Al Bronzo the pasta of reference for Italian cuisine in America.</p>
         <div class="brand-card-stat">Global &middot; Ongoing</div>
       </div>
-    </div>
-
-    <div class="case-history-nav">
-      <button class="ch-prev" aria-label="Previous">&#8592;</button>
-      <button class="ch-next" aria-label="Next">&#8594;</button>
     </div>
 
     </div>
