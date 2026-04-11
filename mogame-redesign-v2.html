@@ -149,6 +149,7 @@ nav.scrolled {
   text-transform: uppercase;
   position: relative;
   transition: color 0.3s;
+  white-space: nowrap;
 }
 
 .nav-links a::after {
@@ -1228,6 +1229,15 @@ footer {
 .reveal-delay-5 { transition-delay: 0.5s; }
 
 /* RESPONSIVE */
+@media (min-width: 769px) and (max-width: 1180px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-logo img { height: 80px !important; }
+  .nav-logo span { display: block; font-size: 0.5rem; letter-spacing: 0.2em; }
+  .nav-links { gap: 1.2rem; }
+  .nav-links a { font-size: 0.65rem; letter-spacing: 0.1em; }
+  .nav-cta { padding: 0.55rem 1rem; font-size: 0.65rem; letter-spacing: 0.1em; }
+}
+
 @media (max-width: 1024px) {
   section { padding: 5rem 2.5rem; }
   nav { padding: 1.2rem 2rem; }
